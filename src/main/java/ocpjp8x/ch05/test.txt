@@ -1,0 +1,8 @@
+1. bcde v
+2. c    v
+3. b    v
+4. c    v
+5. b    v
+6. b    v
+7. d    v
+8. a    x
