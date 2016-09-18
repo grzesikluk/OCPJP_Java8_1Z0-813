@@ -1,4 +1,4 @@
-package ocpjp8x.enthuware.tests;
+package enthuware.tests;
 
 import org.junit.Test;
 
