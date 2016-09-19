@@ -1,4 +1,4 @@
-package enthuware.Test2;
+package enthuware.tests;
 
 import org.junit.Test;
 
