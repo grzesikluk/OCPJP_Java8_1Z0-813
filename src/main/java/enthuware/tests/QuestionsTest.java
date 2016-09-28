@@ -184,9 +184,10 @@ public class QuestionsTest {
     @Test
     public void test13() {
         IntStream is = IntStream.rangeClosed(1, 4);
-        int sum = is.reduce(0, (a, b)->a+b);
+        int sum = is.reduce(0, (a, b) -> a + b);
         System.out.println(sum);
     }
+
     /**
      * question no: 2.1888
      */
@@ -198,6 +199,32 @@ public class QuestionsTest {
     }
 
 
+    /**
+     * question no: 2.1842
+     */
+    @Test
+    public void test15() {
+        AtomicInteger ai = new AtomicInteger();
+        Stream<String> stream = Stream.of("old", "king", "cole", "was", "a", "merry", "old", "soul").parallel();
+        stream.filter(e -> {
+            ai.incrementAndGet();
+            return e.contains("o");
+        }).allMatch(x -> x.indexOf("o") > 0);
+
+        System.out.println("AI = " + ai);
+    }
+
+    /**
+     * question no: 2.1584
+     */
+    @Test
+    public void test16() {
+        Path p1 = Paths.get("c:\\personal\\.\\photos\\..\\readme.txt");
+        Path p2 = Paths.get("c:\\personal\\index.html");
+        Path p3 = p1.relativize(p2);
+        System.out.println(p3);
+
+    }
 
 
     /**

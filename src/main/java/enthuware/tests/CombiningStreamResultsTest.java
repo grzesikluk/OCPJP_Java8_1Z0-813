@@ -3,10 +3,7 @@ package enthuware.tests;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -182,8 +179,14 @@ public class CombiningStreamResultsTest {
     public void test5b() {
 
         Predicate<String> pred = (a)->a.contains("s");
-        Map<Boolean, Set<String>> classified2 = stringList.stream().collect(Collectors.partitioningBy(pred,Collectors.toSet()));
+        Map<Boolean, Set<String>> classified1 = stringList.stream().collect(Collectors.partitioningBy(pred,Collectors.toSet()));
+        System.out.println(classified1);
+
+
+        Map<Boolean, List<String>> classified2 = stringList.stream().collect(Collectors.partitioningBy(pred,Collectors.toList()));
         System.out.println(classified2);
+
+
     }
 
     /**
@@ -210,5 +213,39 @@ public class CombiningStreamResultsTest {
         Map<String,Integer> classified = stringList.stream().collect(Collectors.toMap(s->s,s->s.length()));
         System.out.println(classified);
     }
+
+
+    @Test
+    public void test9() {
+        Optional<String> max = stringList.stream().collect(Collectors.maxBy((a,b)->a.compareTo(b)));
+        System.out.println(max.get());
+
+        Optional<Integer> maxint = stringList.stream().map(a->a.length()).collect(Collectors.maxBy((a,b)->a-b));
+        System.out.println(maxint.get());
+    }
+
+
+    @Test
+    public void test10() {
+        List<Integer> max = stringList.stream().collect(Collectors.mapping((a)->a.length(),Collectors.toList()));
+        System.out.println(max);
+
+    }
+
+    @Test
+    public void test11() {
+        IntSummaryStatistics max = stringList.stream().collect(Collectors.summarizingInt(String::length));
+        System.out.println(max.getCount());
+
+    }
+
+    @Test
+    public void test12() {
+        Map<String,Character> max = stringList.stream().collect(Collectors.toMap(a->a,a->a.charAt(0)));
+        System.out.println(max);
+
+    }
+
+
 
 }
