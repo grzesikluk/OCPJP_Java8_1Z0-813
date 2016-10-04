@@ -2,7 +2,6 @@ package sybex;
 
 import org.junit.Test;
 
-import java.time.Duration;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -13,19 +12,20 @@ public class ResourceBundleTest {
 
     @Test
     public void test1() {
+        Locale us = new Locale("en", "US");
+        Locale fr = new Locale("fr", "FR");
+        Locale pl = new Locale("pl", "PL");
+        Locale it = new Locale("it", "IT");
 
-        Locale fr = new Locale("fr");
-        Locale.setDefault(new Locale("en", "US"));
-        ResourceBundle b = ResourceBundle.getBundle("Dolphins", fr);
-        b.getString("name");
-        b.getString("age");
+        ResourceBundle b = ResourceBundle.getBundle("Dolphins", it);
+
+        System.out.println(b.getString("name"));
+        System.out.println(b.getString("age"));
+        System.out.println(b.getString("greetings"));
 
     }
-    @Test
-    public void test2(){
-        Duration d = Duration.ofMillis(1100);
-        System.out.println(d);
-        d = Duration.ofSeconds(61);
-        System.out.println(d);
-    }
+
+
+
+
 }
